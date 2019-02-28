@@ -1,4 +1,5 @@
 var express = require("express");
+var exphbs  = require('express-handlebars');
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
@@ -27,44 +28,40 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/newsScraper", { useNewUrlParser: true });
 
 // Routes
 
 // A GET route for scraping the echoJS website
-app.get("/scrape", function(req, res) {
+app.get("/", function(req, res) {
   // First, we grab the body of the html with axios
-  axios.get("http://www.echojs.com/").then(function(response) {
+  axios.get("https://thehackernews.com/").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
+    //console.log($);
 
-    // Now, we grab every h2 within an article tag, and do the following:
-    $("article h2").each(function(i, element) {
-      // Save an empty result object
-      var result = {};
+    // Create result object and populate it with article title, link and summary
+    $(".body-post").each(function(i,element){
+      var result ={};
 
-      // Add the text and href of every link, and save them as properties of the result object
-      result.title = $(this)
-        .children("a")
-        .text();
-      result.link = $(this)
-        .children("a")
-        .attr("href");
+      result.title = $(this).children(".story-link").children(".home-post-box").children(".home-right").children(".home-title").text();
+      result.link = $(this).children(".story-link").attr("href");
+      result.summary = $(this).children(".story-link").children(".home-post-box").children(".home-right").children(".home-desc").text();
+      
 
-      // Create a new Article using the `result` object built from scraping
+      //console.log(result);
       db.Article.create(result)
-        .then(function(dbArticle) {
-          // View the added result in the console
-          console.log(dbArticle);
-        })
-        .catch(function(err) {
-          // If an error occurred, log it
-          console.log(err);
-        });
-    });
-
+      .then(function(dbArticle) {
+        // View the added result in the console
+        console.log(dbArticle);
+      })
+      .catch(function(err) {
+        // If an error occurred, log it
+        console.log(err);
+      });
+    })  
     // Send a message to the client
-    res.send("Scrape Complete");
+    res.end();
   });
 });
 
