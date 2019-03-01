@@ -17,6 +17,10 @@ var PORT = 3000;
 // Initialize Express
 var app = express();
 
+// Handlebars
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
 // Configure middleware
 
 // Use morgan logger for logging requests
@@ -61,7 +65,7 @@ app.get("/", function(req, res) {
       });
     })  
     // Send a message to the client
-    res.end();
+    res.render('index');
   });
 });
 

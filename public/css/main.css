@@ -1,0 +1,87 @@
+
+body { background-color:white }
+
+#wrapper {
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5%;
+}
+#articles {
+  display: inline-block;
+  overflow: auto;
+  width: 60%;
+  height: 700px;
+}
+#notes {
+  float: right;
+  width: 30%;
+}
+
+#titleinput {
+    display: block;
+    width: 100%;
+    background-color: #FCF5C7;
+    height: 36px;
+    font-size: 22px;
+    margin-bottom: 2%;
+    color: black
+  }
+
+#bodyinput{
+  display: block;
+  width: 100%;
+  background-color: #FCF5C7;
+  height: 200px;
+  font-size: 18px;
+}
+
+#header {
+    height: 300px;
+    background-image: url("../images/header.jpeg");
+    background-size: 100%;
+    position: relative;
+    filter: drop-shadow(80%);
+}
+
+#headline {
+    text-align: center;
+    color: whitesmoke;
+    margin: 0;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    background-color: blue;
+    opacity: 0.8;
+    padding: 1%
+}
+
+#edition {
+    color: white;
+    background-color:black;
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 70%;
+    left: 43.5%;
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
+    font-size: 24px;
+
+}
+
+#title {
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+#summary {
+    margin-bottom: 0;
+}
+
+#link {
+    color: black
+}
+
+#savenote {
+    margin-top: 2%;
+}
