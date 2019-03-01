@@ -31,8 +31,10 @@ app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
 
+mongodb://<dbuser>:<dbpassword>@ds255930.mlab.com:55930/heroku_p35tvwgw
+
 // Connect to the Mongo DB
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newsScraper";
+var MONGODB_URI = "mongodb://<dbuser>:<dbpassword>@ds255930.mlab.com:55930/heroku_p35tvwgw" || "mongodb://localhost/newsScraper";
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // Routes
