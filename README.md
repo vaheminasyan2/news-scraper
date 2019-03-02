@@ -1,9 +1,9 @@
 # News Scraper
 
-## Overview
+### Overview
 News Scraper app uses a web scrapping Node npm package Cheerio to scrape news from other site, in this case it is [thehackernews.com](https://thehackernews.com). Users can also view, leave and delete comments on each news article. Articles and notes are saved in MongoDB databse. The app is deployed to Heroku with mLab provision for remote MongoDB databse. Try it out [news-scraper-01.herokuapp.com](https://news-scraper-01.herokuapp.com/).
 
-![homepage](public/images/homepage.PNG)
+<kbd><img src="public/images/homepage.PNG"/></kbd>
 
 ### Technology used:
 - Node.js
